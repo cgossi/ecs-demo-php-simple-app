@@ -1,0 +1,40 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - echo "initial test buildspec"
+      - echo "foo" > /tmp/build.json
+
+artifacts:
+  files: /tmp/build.json
+  discard-paths: yes
+
+#version: 0.1
+#
+#phases:
+#  install:
+#    commands:
+#      - apt-get update && apt-get -y install python-pip
+#      - pip install --upgrade python
+#      - pip install --upgrade awscli
+#
+#  pre_build:
+#    commands:
+#      - printenv
+#      - echo -n "$CODEBUILD_RESOLVED_SOURCE_VERSION" > /tmp/commit_sha.out
+#      - printf "%s:%s-simpleapp" "$REPOSITORY_URI" "$(cat /tmp/commit_sha.out)" > /tmp/simpleapp_build_tag.out
+#      - printf '{"simpleappTag":"%s-simpleapp"}' "$(cat /tmp/commit_sha.out)" > /tmp/build.json
+#      - $(aws ecr get-login)
+#
+#  build:
+#    commands:
+#      - docker build --tag "$(cat /tmp/simpleapp_build_tag.out)" .
+#
+#  post_build:
+#    commands:
+#      - docker push "$(cat /tmp/simpleapp_build_tag.out)"
+#
+#artifacts:
+#  files: /tmp/build.json
+#  discard-paths: yes
